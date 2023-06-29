@@ -1,4 +1,5 @@
 #ifdef SHADER_MODEL // make safe to include in resource file to enforce dependency
+#define SHADER_MODEL 0x200
 #if SHADER_MODEL >= 0x400
 
 #ifndef PS_SCALE_FACTOR

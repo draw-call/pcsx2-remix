@@ -256,6 +256,12 @@ bool GSDevice9::Create(const std::shared_ptr<GSWnd> &wnd)
 
 	m_d3dcaps.VertexShaderVersion = m_d3dcaps.PixelShaderVersion & ~0x10000;
 
+#ifdef RTX_REMIX
+
+	SetFeatureLevel(D3D_FEATURE_LEVEL_9_2, false);
+
+#else
+
 	if(m_d3dcaps.PixelShaderVersion >= D3DPS_VERSION(3, 0))
 	{
 		SetFeatureLevel(D3D_FEATURE_LEVEL_9_3, false);
@@ -274,6 +280,8 @@ bool GSDevice9::Create(const std::shared_ptr<GSWnd> &wnd)
 
 		return false;
 	}
+
+#endif
 
 	if(!Reset(1, 1))
 	{
