@@ -27,7 +27,7 @@ build_script:
 
 after_build:
   - type NUL > bin\portable.ini
-  - set folder_name=pcsx2-%build%-%visualstudio_string%-%platform%-%target%
+  - set folder_name=pcsx2-%APPVEYOR_BUILD_NUMBER%-%visualstudio_string%-%platform%-%target%
   - rename bin %folder_name%
   - 7z a -mx9 %folder_name%.7z %folder_name%
 
